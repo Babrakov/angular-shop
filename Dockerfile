@@ -1,4 +1,5 @@
 ﻿FROM node:18 as build
+LABEL version="latest"
 WORKDIR /app
 #COPY package*.json ./
 COPY *.json ./
