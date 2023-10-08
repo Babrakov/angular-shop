@@ -1,14 +1,14 @@
 version: 2
 jobs:
-  build:
-    docker:
-      - image: docker:20.10.9
-    steps:
-      - checkout  # Получение исходного кода      
-      - setup_remote_docker               
-      - run:
-          name: Build Docker Image
-          command: docker build -t angular-shop:latest .
+  # build:
+    # docker:
+      # - image: docker:20.10.9
+    # steps:
+      # - checkout  # Получение исходного кода      
+      # - setup_remote_docker               
+      # - run:
+          # name: Build Docker Image
+          # command: docker build -t angular-shop:latest .
 
   deploy:
     # machine:
@@ -21,6 +21,7 @@ jobs:
       - run:
           name: Deploy to GCP
           command: |
+            docker build -t angular-shop:latest .
             docker login -u _json_key -p "$(echo $GCP_SERVICE_KEY)" https://gcr.io
             docker tag angular-shop gcr.io/prod-398815/angular-shop
             docker push gcr.io/prod-398815/angular-shop
