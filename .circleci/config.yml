@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Deploy to GCP
           command: |
-            gcloud compute instances create my-instance-name \
+            gcloud compute instances create instance-1 \
               --image-family=ubuntu-1804-lts \
               --image-project=ubuntu-os-cloud \
               --machine-type=n1-standard-1 \
