@@ -4,8 +4,7 @@ jobs:
     docker:
       - image: docker:20.10.9
     steps:
-      - checkout  # Получение исходного кода
-      
+      - checkout  # Получение исходного кода      
       - setup_remote_docker               
       - run:
           name: Build Docker Image
@@ -15,7 +14,7 @@ jobs:
     # machine:
       # enabled: true
     docker:
-      - image: node:18
+      - image: docker:20.10.9
     steps:
       - checkout
       - setup_remote_docker          
