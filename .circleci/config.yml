@@ -5,20 +5,6 @@ jobs:
       - image: docker:20.10.9
     steps:
       - checkout  # Получение исходного кода
-      # Установка Node.js
-      - run:
-          name: Install Node.js
-          command: |
-            curl -sL https://deb.nodesource.com/setup_18.x | bash -
-            apt-get install -y nodejs
-      
-      # Установка зависимостей и сборка Angular-приложения
-      - run:
-          name: Build Angular App
-          command: |
-            npm install -g @angular/cli
-            npm install
-            ng build --prod
       
       - setup_remote_docker               
       - run:
