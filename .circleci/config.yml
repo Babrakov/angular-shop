@@ -5,6 +5,8 @@ jobs:
       - image: docker:20.10.9
     steps:
       - checkout  # Получение исходного кода
+      - setup_remote_docker:
+          version: 20.10.9
       - run:
           name: Build Docker Image
           command: docker build -t angular-shop .
