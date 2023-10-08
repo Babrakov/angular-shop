@@ -42,7 +42,7 @@ jobs:
           name: Deploy to GCP
           command: |
             gcloud compute instances create instance-1 \
-              --image-family=ubuntu-1804-lts \
+              --image-family=ubuntu-2004-focal-v20230918 \
               --image-project=ubuntu-os-cloud \
               --machine-type=n1-standard-1 \
               --zone=europe-central2-a \
