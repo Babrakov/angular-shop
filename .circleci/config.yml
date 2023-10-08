@@ -12,12 +12,13 @@ jobs:
           command: docker build -t angular-shop .
 
   deploy:
-    machine:
-      enabled: true
+    # machine:
+      # enabled: true
+    docker:
+      - image: node:18
     steps:
       - checkout
-      - setup_remote_docker:
-          version: 18.06.0-ce
+      - setup_remote_docker          
       - run:
           name: Deploy to GCP
           command: |
