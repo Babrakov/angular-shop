@@ -26,22 +26,22 @@ jobs:
             docker tag angular-shop gcr.io/prod-398815/angular-shop
             docker push gcr.io/prod-398815/angular-shop
             
-    deploy-to-gcp:
-      docker:
-        - image: google/cloud-sdk
-      steps:
-        - checkout
-        - run:
-            name: Authenticate with GCP
-            command: echo $GCP_SERVICE_KEY | base64 -d > /tmp/keyfile.json && gcloud auth activate-service-account --key-file /tmp/keyfile.json
-        - run:
-            name: Deploy to GCP
-            command: |
-              gcloud compute instances create my-instance-name \
-                --image-family=ubuntu-1804-lts \
-                --image-project=ubuntu-os-cloud \
-                --machine-type=n1-standard-1 \
-                --tags=http-server,https-server
+  deploy-to-gcp:
+    docker:
+      - image: google/cloud-sdk
+    steps:
+      - checkout
+      - run:
+          name: Authenticate with GCP
+          command: echo $GCP_SERVICE_KEY | base64 -d > /tmp/keyfile.json && gcloud auth activate-service-account --key-file /tmp/keyfile.json
+      - run:
+          name: Deploy to GCP
+          command: |
+            gcloud compute instances create my-instance-name \
+              --image-family=ubuntu-1804-lts \
+              --image-project=ubuntu-os-cloud \
+              --machine-type=n1-standard-1 \
+              --tags=http-server,https-server
 
             
 workflows:
