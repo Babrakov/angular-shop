@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7  # Пример образа для выполнения сборки
+    steps:
+      - checkout  # Получение исходного кода
+      - run:
+          name: Build Docker Image
+          command: docker build -t angular-shop .
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 18.06.0-ce
+      - run:
+          name: Deploy to GCP
+          command: |
+            docker login -u _json_key -p "$(echo $GCP_SERVICE_KEY | base64 -d)" https://gcr.io
+            docker tag angular-shop gcr.io/prod-398815/angular-shop
+            docker push gcr.io/prod-398815/angular-shop
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
