@@ -45,6 +45,7 @@ jobs:
               --image-family=ubuntu-1804-lts \
               --image-project=ubuntu-os-cloud \
               --machine-type=n1-standard-1 \
+              --zone=europe-central2-a \
               --tags=http-server,https-server
 
             
