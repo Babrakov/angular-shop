@@ -32,6 +32,10 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Set GCP Project ID
+        command: echo "export CLOUDSDK_CORE_PROJECT=prod-398815" >> $BASH_ENV
+    
+      - run:
           name: Authenticate with GCP
           command: echo $GCP_SERVICE_KEY > /tmp/keyfile.json && gcloud auth activate-service-account --key-file /tmp/keyfile.json
       - run:
