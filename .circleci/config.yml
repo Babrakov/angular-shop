@@ -33,7 +33,7 @@ jobs:
       - checkout
       - run:
           name: Authenticate with GCP
-          command: echo $GCP_SERVICE_KEY | base64 -d > /tmp/keyfile.json && gcloud auth activate-service-account --key-file /tmp/keyfile.json
+          command: echo $GCP_SERVICE_KEY > /tmp/keyfile.json && gcloud auth activate-service-account --key-file /tmp/keyfile.json
       - run:
           name: Deploy to GCP
           command: |
