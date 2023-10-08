@@ -1,10 +1,10 @@
 version: 2
 jobs:
-  # build:
-    # docker:
-      # - image: docker:20.10.9
-    # steps:
-      # - checkout  # Получение исходного кода      
+  build:
+    docker:
+      - image: docker:20.10.9
+    steps:
+      - checkout  # Получение исходного кода      
       # - setup_remote_docker               
       # - run:
           # name: Build Docker Image
@@ -29,7 +29,7 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      # - build
+      - build
       - deploy:
-          # requires:
-            # - build
+          requires:
+            - build
