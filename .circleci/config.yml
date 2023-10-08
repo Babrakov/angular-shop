@@ -32,8 +32,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Set GCP Project ID
-        command: echo "export CLOUDSDK_CORE_PROJECT=prod-398815" >> $BASH_ENV
+          name: Set GCP Project ID
+          command: echo "export CLOUDSDK_CORE_PROJECT=prod-398815" >> $BASH_ENV
     
       - run:
           name: Authenticate with GCP
