@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker               
       - run:
           name: Build Docker Image
-          command: docker build -t angular-shop .
+          command: docker build -t angular-shop:latest .
 
   deploy:
     # machine:
