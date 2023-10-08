@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7  # Пример образа для выполнения сборки
+      - image: docker:20.10.9
     steps:
       - checkout  # Получение исходного кода
       - run:
