@@ -1,6 +1,9 @@
 ﻿# Use an official Nginx image as the base image
 FROM nginx
 
+# Install curl
+RUN apt-get update && apt-get install -y curl
+
 # Copy the built Angular app to the appropriate location in the container
 COPY dist/shop /usr/share/nginx/html
 
